@@ -1,0 +1,19 @@
+{
+  "name": "foodieapp",
+  "version": "1.0.0",
+  "description": "****\r # Foodie App",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon /index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JesusAParedes/FoodieApp.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/JesusAParedes/FoodieApp/issues"
+  },
+  "homepage": "https://github.com/JesusAParedes/FoodieApp#readme"
+}
