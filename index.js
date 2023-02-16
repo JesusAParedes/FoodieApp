@@ -1,12 +1,15 @@
 const express = require('express');
 const app = express();
 
+const routes = require('./routes/index')
 
 app.use(express.json());
 
-app.get('/foodapi/users', (req,res) => {
+app.use(routes);
+
+// app.get('/foodapi/users', (req,res) => {
     
-})
+// })
 
 
 app.listen('4001', () => {
