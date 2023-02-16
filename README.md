@@ -30,7 +30,7 @@ Create new repo titled the name of your app with a README.md file.
 **Tables**
 1. users
 2. userCredentials
-3. food
+3. food items
 4. restaurants
 
 **Fields**
@@ -53,7 +53,7 @@ Create new repo titled the name of your app with a README.md file.
 
 -pw
 
-*3. For food Table*
+*3. For food items Table*
 
 -food_id (Primary Key)
 

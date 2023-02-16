@@ -1,6 +1,6 @@
 USE foodapi;
 
-INSERT INTO food
+INSERT INTO foodItems
     (food_id, user_id, food_name, rating)
 VALUES
     (1, 11, "Big Carl", "2/5"), 
