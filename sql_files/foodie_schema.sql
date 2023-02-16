@@ -3,7 +3,7 @@ CREATE DATABASE IF NOT EXISTS foodAPI;
 USE foodAPI;
 
 DROP TABLE IF EXISTS users,
-                     food,
+                     foodItems,
                      userCredentials,
                      restaurants;
 
@@ -15,7 +15,7 @@ CREATE TABLE users (
     PRIMARY KEY (user_id)
 );
 
-CREATE TABLE food (
+CREATE TABLE foodItems (
     food_id     INT NOT NULL AUTO_INCREMENT,
     user_id     INT NOT NULL,
     food_name   VARCHAR(50) NOT NULL,
@@ -37,5 +37,5 @@ CREATE TABLE restaurants (
     address     VARCHAR(50) NOT NULL,
     phone       VARCHAR(50) NOT NULL,
     hours       VARCHAR(50) NOT NULL,
-    FOREIGN KEY (food_id) REFERENCES food(food_id)
+    FOREIGN KEY (food_id) REFERENCES foodItems(food_id)
 );
