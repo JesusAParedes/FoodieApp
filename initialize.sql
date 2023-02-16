@@ -4,7 +4,7 @@ USE foodAPI;
 
 DROP TABLE IF EXISTS users,
                      food,
-                     usersCredentials,
+                     userCredentials,
                      restaurants;
 
 CREATE TABLE users (
@@ -24,7 +24,7 @@ CREATE TABLE food (
     PRIMARY KEY (food_id)
 );
 
-CREATE TABLE usersCredentials (
+CREATE TABLE userCredentials (
     user_id     INT         NOT NULL,
     username    VARCHAR(50) NOT NULL,
     pw          VARCHAR(50) NOT NULL,
@@ -65,7 +65,7 @@ VALUES
     (3, "El Patron", "168 Lavender Valley", "222-666-4444", "6AM-7PM"),
     (4, "SoHa", "892 Rocky Rd", "230-555-8888", "8AM-8PM");
 
-INSERT INTO usersCredentials
+INSERT INTO userCredentials
     (user_id, username, pw)
 VALUES
     (11, "jjrocks", "jdaman2!"),

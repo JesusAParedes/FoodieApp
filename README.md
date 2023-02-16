@@ -25,17 +25,68 @@ Create a name for this app/project.
 
 Create new repo titled the name of your app with a README.md file.
 
-In the README.md, list out the data you think you'll need for this app.
+**In the README.md, list out the data you think you'll need for this app. Categorize the data into tables. Define relationships between those tables.**
 
-Categorize the data into tables.
+**Tables**
+1. users
+2. userCredentials
+3. food
+4. restaurants
 
-Define relationships between those tables.
+**Fields**
+
+*1. For users Table*
+
+-user_id (Primary Key)
+ 
+-first_name
+
+-last_name
+
+-email
+
+*2. For userCredentials Table*
+
+-user_id (Foreign Key)
+
+-username
+
+-pw
+
+*3. For food Table*
+
+-food_id (Primary Key)
+
+-user_id (Foreign Key)
+
+-food_name
+
+-rating
+
+*4. For restaurants Table*
+
+-food_id (Foreign Key)
+
+-name
+
+-address
+
+-phone
+
+-hours
+
+**Relationships**
+
+**Each user has one and only one userCredentials.*
+
+*Each user has many food items connected to their account through the user_id.*
+
+*Each restaurant has many food items connected through the food_id.*
 
 Using any digital tool you like, construct an ER diagram that communicates those tables, their relationships and their fields/properties.
-
 Save a copy of this ER Diagram in the repo.
 
-Review the steps to create a DB, connect to it, seed it with data and write them down in the README.md.
+**Review the steps to create a DB, connect to it, seed it with data and write them down in the README.md.**
 
 **Create A DataBase on GCP**
 1. Click the "SQL" option under the "STORAGE" header  
