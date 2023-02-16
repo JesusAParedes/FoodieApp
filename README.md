@@ -112,6 +112,15 @@ Save a copy of this ER Diagram in the repo.
 4. Click "Test Connection" and make sure its successful.
 5. Click "OK" to save connection. Double click connection to open & connect to database.
 
+**Seed Database with Data(Windows)**
+
+1. Open up Windows Powershell
+2. Cd into the folder that contains the sql files for the data you want.
+3. Type "Get-Content users.sql | mysql -u root -p " where users.sql is the name of the data you want to open seed in and root is the username of your database in MySQL.
+4. Enter in your password that you stored in MySQL. Everything works when there are no errors.
+5. Go Back to MySQL Workbench and refresh the database. Data should be now in your database.
+
+
 Write the SQL Commands that would create the tables in files named after the data like: userSeedData.sql, carSeedData.sql, productSeedData.sql, etc...
 
 Store those files in the repo
