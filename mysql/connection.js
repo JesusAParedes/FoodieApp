@@ -27,13 +27,4 @@ class Connection {
 }
 const instance = new Connection();
 
-
-
-instance.query(user, err => {
-    if (err) {
-        throw err
-    }
-    console.log("SQL seed complete")
-})
-
 module.exports = instance;
