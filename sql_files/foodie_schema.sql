@@ -13,6 +13,7 @@ CREATE TABLE users (
     last_name   VARCHAR(50) NOT NULL,
     email      VARCHAR(50) NOT NULL,
     PRIMARY KEY (user_id)
+
 );
 
 CREATE TABLE foodItems (
@@ -22,6 +23,7 @@ CREATE TABLE foodItems (
     rating      VARCHAR(50) NOT NULL,
     FOREIGN KEY (user_id) REFERENCES users(user_id),
     PRIMARY KEY (food_id)
+    ON DELETE CASCADE
 );
 
 CREATE TABLE userCredentials (
@@ -29,6 +31,7 @@ CREATE TABLE userCredentials (
     username    VARCHAR(50) NOT NULL,
     pw          VARCHAR(50) NOT NULL,
     FOREIGN KEY (user_id) REFERENCES users(user_id)
+    ON DELETE CASCADE
 );
 
 CREATE TABLE restaurants (
@@ -38,4 +41,5 @@ CREATE TABLE restaurants (
     phone       VARCHAR(50) NOT NULL,
     hours       VARCHAR(50) NOT NULL,
     FOREIGN KEY (food_id) REFERENCES foodItems(food_id)
+    
 );
