@@ -48,13 +48,13 @@ const updateUser = (req, res) => {
 };
 
 const deleteUser = (req, res) => {
-    let sql = '';
-    let rep = [];
+    let sql = 'DELETE FROM ?? WHERE ?? = ?';
+    let rep = ['users', 'user_id', req.params.id];
     sql = mysql.format(sql,rep);
 
     pool.query(sql, (err,rows) => {
         if (err) return errors(res, err);
-        return res.send("User updated");
+        return res.send("User deleted");
     });
 }
 
