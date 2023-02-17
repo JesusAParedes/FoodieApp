@@ -2,6 +2,13 @@ const express = require('express');
 const router = express.Router();
 const usersController = require('../controller/users.js');
 
+router.use((req,res,next) => {
+    const timeElapsed = Date.now();
+    const today = new Date(timeElapsed);
+    console.log('Today:', today.toString())
+    next();
+})
+
 router.get('/', usersController.defaultRoute);
 
 router.get('/users', usersController.getAllUsers);
