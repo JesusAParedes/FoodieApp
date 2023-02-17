@@ -10,11 +10,3 @@ VALUES
     (52, "Jerry", "Seamus", "t2@some.come"),
     (62, "Tonya", "Ran", "tonnr@gmee.com"),
     (72, "Lee", "Jackson", "lj@gmail.com");
-
-
-
-
-
-
-
-

@@ -8,6 +8,8 @@ router.get('/users', usersController.getAllUsers);
 
 router.get('/users/:id', usersController.userById);
 
-router.post('/users', usersController.addUser)
+router.post('/users', usersController.addUser);
+
+router.put('/users/:id', usersController.updateUser);
 
 module.exports = router;

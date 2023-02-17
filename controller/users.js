@@ -18,7 +18,6 @@ const userById = (req, res) => {
     let sql = 'SELECT * FROM ?? WHERE ?? = ?';
     let rep = ['users', 'user_id', req.params.id];
     sql = mysql.format(sql, rep);
-    console.log(req.params.firstname)
 
     pool.query(sql, (err, rows) => {
         if (err) return errors(res, err);
@@ -27,9 +26,8 @@ const userById = (req, res) => {
 };
 
 const addUser = (req, res) => {
-    let sql = 'INSERT INTO users(first_name, last_name, email) VALUES (?,?,?)';
-    let rep = [req.body.first_name, req.body.last_name, req.body.email];
-    console.log('First name', req.body.first_name)
+    let sql = 'INSERT INTO ??(??, ??, ??) VALUES (?,?,?)';
+    let rep = ['users', 'first_name', 'last_name', 'email', req.body.first_name, req.body.last_name, req.body.email];
 
     sql = mysql.format(sql, rep);
 
@@ -39,9 +37,24 @@ const addUser = (req, res) => {
     })
 };
 
+const updateUser = (req, res) => {
+    let sql = 'UPDATE ?? SET ?? = ?, ?? = ?, ?? = ? WHERE ?? = ?';
+    let rep = ['users', 'first_name', req.body.first_name, 'last_name', req.body.last_name, 'email', req.body.email, 'user_id', req.params.id];
+
+    sql = mysql.format(sql, rep);
+
+    pool.query(sql, (err,rows) => {
+        if (err) return errors(res, err);
+        return res.send("User updated");
+    })
+    
+
+}
+
 module.exports = {
     defaultRoute,
     getAllUsers,
     userById,
-    addUser
+    addUser,
+    updateUser
 }
