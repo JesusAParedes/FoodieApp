@@ -13,7 +13,7 @@ const getAllUsers = (req, res, next) => {
         if (err) return errors(res, err);
         return res.json(rows);
     });
-    next();
+    
 };
 
 
@@ -26,23 +26,28 @@ const userById = (req, res, next) => {
         if (err) return errors(res, err);
         return res.json(rows);
     });
-    next();
+   
 };
 
 const addUser = (req, res, next) => {
-    let sql = 'INSERT INTO ??(??, ??, ??) VALUES (?,?,?)';
-    let rep = ['users', 'first_name', 'last_name', 'email', req.body.first_name, req.body.last_name, req.body.email];
+    let sql = 'INSERT INTO ??(??, ??, ??, ??, ??) VALUES (?,?,?,?,?)';
+    let rep = ['users', 'first_name', 'last_name', 'email', 'username', 'pw', req.body.first_name, req.body.last_name, req.body.email, req.body.username, req.body.pw];
     sql = mysql.format(sql, rep);
 
     pool.query(sql, (err,rows) => {
         if (err) return errors(res, err);
         return res.send("User added");
-    });
-    next();
+    }
+    
+    );
+    
 };
 
 const updateUser = (req, res, next) => {
     let sql = 'UPDATE ?? SET ?? = ?, ?? = ?, ?? = ? WHERE ?? = ?';
+    let userId = parseInt(req.params.id);
+    let body = req.body;
+    
     let rep = ['users', 'first_name', req.body.first_name, 'last_name', req.body.last_name, 'email', req.body.email, 'user_id', req.params.id];
     sql = mysql.format(sql, rep);
 
@@ -50,7 +55,7 @@ const updateUser = (req, res, next) => {
         if (err) return errors(res, err);
         return res.send("User updated");
     });
-    next();
+    
 };
 
 const deleteUser = (req, res, next) => {
@@ -62,7 +67,7 @@ const deleteUser = (req, res, next) => {
         if (err) return errors(res, err);
         return res.send("User deleted");
     });
-    next();
+    
 }
 
 module.exports = {
