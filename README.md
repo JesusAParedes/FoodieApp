@@ -29,9 +29,8 @@ Create new repo titled the name of your app with a README.md file.
 
 **Tables**
 1. users
-2. userCredentials
-3. food items
-4. restaurants
+2. food items
+3. restaurants
 
 **Fields**
 
@@ -45,15 +44,13 @@ Create new repo titled the name of your app with a README.md file.
 
 -email
 
-*2. For userCredentials Table*
-
--user_id (Foreign Key)
-
 -username
 
 -pw
 
-*3. For food items Table*
+
+
+*2. For food items Table*
 
 -food_id (Primary Key)
 
@@ -63,7 +60,7 @@ Create new repo titled the name of your app with a README.md file.
 
 -rating
 
-*4. For restaurants Table*
+*3. For restaurants Table*
 
 -food_id (Foreign Key)
 
@@ -76,8 +73,6 @@ Create new repo titled the name of your app with a README.md file.
 -hours
 
 **Relationships**
-
-**Each user has one and only one userCredentials.*
 
 *Each user has many food items connected to their account through the user_id.*
 
