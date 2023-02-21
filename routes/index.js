@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const usersController = require('../controller/users.js');
-
+const foodController = require('../controller/foodItems.js')
 router.use((req,res,next) => {
     const timeElapsed = Date.now();
     const today = new Date(timeElapsed);
@@ -20,5 +20,7 @@ router.post('/users', usersController.addUser);
 router.put('/users/:id', usersController.updateUser);
 
 router.delete('/users/:id', usersController.deleteUser);
+
+router.get('/food', foodController.getAllFood);
 
 module.exports = router;
