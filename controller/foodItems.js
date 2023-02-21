@@ -6,8 +6,8 @@ const getAllFood = (req, res, next) => {
     pool.query('SELECT * FROM foodItems', (err, rows) => {
         if (err) return errors(res, err);
         return res.json(rows);
-    })
-}
+    });
+};
 
 const foodById = (req, res, next) => {
     let sql = 'SELECT * FROM ?? WHERE ?? = ?';
@@ -17,8 +17,8 @@ const foodById = (req, res, next) => {
     pool.query(sql, (err, rows) => {
         if(err) return errors(res, err);
         return res.json(rows);
-    })
-}
+    });
+};
 
 module.exports = {
     getAllFood,

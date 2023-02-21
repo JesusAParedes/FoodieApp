@@ -13,9 +13,7 @@ const getAllUsers = (req, res, next) => {
         if (err) return errors(res, err);
         return res.json(rows);
     });
-    
 };
-
 
 const userById = (req, res, next) => {
     let sql = 'SELECT * FROM ?? WHERE ?? = ?';
@@ -26,7 +24,6 @@ const userById = (req, res, next) => {
         if (err) return errors(res, err);
         return res.json(rows);
     });
-   
 };
 
 const addUser = (req, res, next) => {
@@ -37,10 +34,7 @@ const addUser = (req, res, next) => {
     pool.query(sql, (err,rows) => {
         if (err) return errors(res, err);
         return res.send("User added");
-    }
-    
-    );
-    
+    });
 };
 
 const updateUser = (req, res, next) => {
@@ -55,7 +49,6 @@ const updateUser = (req, res, next) => {
         if (err) return errors(res, err);
         return res.send("User updated");
     });
-    
 };
 
 const deleteUser = (req, res, next) => {
@@ -67,7 +60,6 @@ const deleteUser = (req, res, next) => {
         if (err) return errors(res, err);
         return res.send("User deleted");
     });
-    
 }
 
 module.exports = {
