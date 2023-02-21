@@ -23,4 +23,6 @@ router.delete('/users/:id', usersController.deleteUser);
 
 router.get('/food', foodController.getAllFood);
 
+router.get('/food/:id', foodController.foodById);
+
 module.exports = router;

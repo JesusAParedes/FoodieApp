@@ -9,6 +9,18 @@ const getAllFood = (req, res, next) => {
     })
 }
 
+const foodById = (req, res, next) => {
+    let sql = 'SELECT * FROM ?? WHERE ?? = ?';
+    let rep = ['foodItems', 'food_id', req.params.id];
+    sql = mysql.format(sql,rep);
+
+    pool.query(sql, (err, rows) => {
+        if(err) return errors(res, err);
+        return res.json(rows);
+    })
+}
+
 module.exports = {
-    getAllFood
+    getAllFood,
+    foodById
 };
