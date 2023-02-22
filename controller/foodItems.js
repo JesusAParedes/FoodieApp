@@ -11,7 +11,7 @@ const getAllFood = (req, res, next) => {
 
 const foodById = (req, res, next) => {
     let sql = 'SELECT * FROM ?? WHERE ?? = ?';
-    let rep = ['foodItems', 'food_id', req.params.id];
+    let rep = ['foodItems', 'user_id', req.params.id];
     sql = mysql.format(sql,rep);
 
     pool.query(sql, (err, rows) => {
@@ -24,7 +24,7 @@ const addFood = (req, res, next) => {
     let sql = 'INSERT INTO ??(??,??) VALUES(?,?)';
     let rep = ['foodItems', 'food_name', 'rating', req.body.food_name, req.body.rating];
     sql = mysql.format(sql,rep);
-
+    
     pool.query(sql, (err, rows) => {
         if(err) return errors(res, err);
         return res.send("Food Item Added");
