@@ -1,7 +1,7 @@
 USE foodapi;
 
 INSERT INTO users
-    (user_id, first_name, last_name, email, username, pw)
+    (user_id, first_name, last_name, email, username, password)
 VALUES
     (11, "John", "Jacob", "jj@example.com", "jjrocks", "jdaman2!"),
     (22, "Yu", "Kwon", "yk2@swan.org", "y2serious", "k8tie"),
