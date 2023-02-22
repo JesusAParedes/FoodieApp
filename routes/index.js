@@ -2,7 +2,8 @@ const express = require('express');
 const app = express();
 const router = express.Router();
 const usersRoutes = require('./users.js');
-const foodRoutes = require('./foodItems.js')
+const foodRoutes = require('./foodItems.js');
+const restaurantsRoutes = require('./restaurants.js');
 
 router.use((req,res,next) => {
     const timeElapsed = Date.now();
@@ -14,5 +15,7 @@ router.use((req,res,next) => {
 router.use(usersRoutes);
 
 router.use(foodRoutes);
+
+router.use(restaurantsRoutes);
 
 module.exports = router;
