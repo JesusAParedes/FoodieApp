@@ -28,11 +28,23 @@ const addFood = (req, res, next) => {
     pool.query(sql, (err, rows) => {
         if(err) return errors(res, err);
         return res.send("Food Item Added");
-    })
-}
+    });
+};
+
+const deleteFood = (req, res, next) => {
+    let sql = 'DELETE FROM ?? WHERE ?? = ?';
+    let rep = ['foodItems', 'user_id', req.params.id];
+    sql = mysql.format(sql,rep);
+
+    pool.query(sql, (err, rows) => {
+        if(err) return errors(res, err);
+        return res.send("Food Item Deleted");
+    });
+};
 
 module.exports = {
     getAllFood,
     foodById,
-    addFood
+    addFood,
+    deleteFood
 };
