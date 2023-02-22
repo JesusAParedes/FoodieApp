@@ -27,7 +27,7 @@ const userById = (req, res, next) => {
 };
 
 const addUser = (req, res, next) => {
-    if(!req.body) return res.sendStatus(400);
+    if(!req.body) return res.status(400);
 
     let sql = 'INSERT INTO ??(??, ??, ??, ??, ??) VALUES (?,?,?,?,?)';
     let rep = ['users', 'first_name', 'last_name', 'email', 'username', 'password', req.body.first_name, req.body.last_name, req.body.email, req.body.username, req.body.password];
