@@ -1,7 +1,7 @@
 USE foodapi;
 
 INSERT INTO restaurants
-    (food_id, name, address, phone, hours)
+    (store_id, name, address, phone, hours)
 VALUES
     (1, "Carl's Jr", "1250 Somewhere Ln", "800-966-2500", "9AM-9PM"),
     (2, "Taco Bell", "999 Island Ave", "929-556-2746", "8AM-12AM"),
