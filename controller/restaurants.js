@@ -9,7 +9,19 @@ const getAllRestaurants = (req, res, next) => {
     });
 };
 
+const RestaurantById = (req, res, next) => {
+    let sql = 'SELECT * FROM ?? WHERE ?? = ?';
+    let rep = ['restaurants', 'store_id', req.params.id];
+    sql = mysql.format(sql,rep);
+
+    pool.query(sql, (err, rows) => {
+        if (err) return errors(res, err);
+        return res.json(rows);
+    });
+}
+
 
 module.exports = {
-    getAllRestaurants
+    getAllRestaurants,
+    RestaurantById
 };
