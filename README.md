@@ -76,7 +76,7 @@ Create new repo titled the name of your app with a README.md file.
 
 *Each user has many food items connected to their account through the user_id.*
 
-*Each restaurant has many food items connected through the food_id.*
+*Each restaurant has many food items connected through the store_id.*
 
 Using any digital tool you like, construct an ER diagram that communicates those tables, their relationships and their fields/properties.
 Save a copy of this ER Diagram in the repo.
