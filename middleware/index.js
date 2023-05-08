@@ -1,6 +1,8 @@
 const jwksRsa = require('jwks-rsa');
 const { expressjwt: jwt } = require("express-jwt");
 
+
+//function that blocks requests to an endpoint until people are authenticated
 const checkJwt = jwt({
     secret: jwksRsa.expressJwtSecret({
         cache: true,

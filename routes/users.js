@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const usersController = require('../controller/users.js');
 const { checkJwt } = require('../middleware')
+const { login } = require('../controller/login.js')
 
 router.get('/', usersController.defaultRoute);
 
@@ -12,7 +13,7 @@ router.get('/users', usersController.getAllUsers);
 router.get('/users/:id', usersController.userById);
 
 //create a new user
-router.post('/users', checkJwt, usersController.addUser);
+router.post('/users', login, checkJwt, usersController.addUser);
 
 //update a user's info
 router.put('/users/:id', checkJwt, usersController.updateUser);

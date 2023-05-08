@@ -1,6 +1,7 @@
 const express = require('express');
 const app = express();
 const router = express.Router();
+const loginRoutes = require('./login.js')
 const usersRoutes = require('./users.js');
 const foodRoutes = require('./foodItems.js');
 const restaurantsRoutes = require('./restaurants.js');
@@ -11,6 +12,8 @@ router.use((req,res,next) => {
     console.log('Today:', today.toString())
     next();
 });
+
+router.use(loginRoutes);
 
 router.use(usersRoutes);
 
