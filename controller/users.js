@@ -1,11 +1,33 @@
 const mysql = require('mysql2');
+const argon2 = require('argon2');
 const pool = require('../mysql/connection.js');
 const { errors } = require('../mysql/errors');
+const jwt = require('jsonwebtoken');
 
 const defaultRoute = (req, res, next) => {
     console.log('Welcome to Foodies!');
     res.send('Welcome to Foodies!');
     next();
+};
+
+const login = async (req, res, next) => {
+    const { username, password } = req.body;
+
+    let sql = 'SELECT * FROM ?? WHERE ?? = ?';
+    let rep = ['users', 'username', username]
+    sql = mysql.format(sql,rep);
+
+    pool.query(sql, async (err, rows) => {
+        if(err) return errors(res, err);
+        if(!rows[0]) return errors(res, {err: 'This user does not exist.'});
+        const hash = rows[0].password;
+        const match = await argon2.verify(hash, password);
+        if(!match) return errors(res, {err: 'This password does not match.'})
+        if(match) {
+            const token = jwt.sign({id: rows[0].user_id}, process.env.PRIVATEKEY)
+            return res.status(200).json({ token })
+        }
+    })
 };
 
 const getAllUsers = (req, res, next) => {
@@ -26,11 +48,12 @@ const userById = (req, res, next) => {
     });
 };
 
-const addUser = (req, res, next) => {
+const addUser = async (req, res, next) => {
     if(!req.body) return res.status(400);
 
     let sql = 'INSERT INTO ??(??, ??, ??, ??, ??) VALUES (?,?,?,?,?)';
-    let rep = ['users', 'first_name', 'last_name', 'email', 'username', 'password', req.body.first_name, req.body.last_name, req.body.email, req.body.username, req.body.password];
+    const hash = await argon2.hash(req.body.password);
+    let rep = ['users', 'first_name', 'last_name', 'email', 'username', 'password', req.body.first_name, req.body.last_name, req.body.email, req.body.username, hash];
     sql = mysql.format(sql, rep);
 
     pool.query(sql, (err,rows) => {
@@ -70,5 +93,6 @@ module.exports = {
     userById,
     addUser,
     updateUser,
-    deleteUser
+    deleteUser,
+    login
 };
