@@ -18,7 +18,9 @@ const login = async (req, res, next) => {
     sql = mysql.format(sql,rep);
 
     pool.query(sql, async (err, rows) => {
+        //if error return the error
         if(err) return errors(res, err);
+        //if nothing is typed in to username
         if(!rows[0]) return errors(res, {err: 'This user does not exist.'});
         const hash = rows[0].password;
         const match = await argon2.verify(hash, password);

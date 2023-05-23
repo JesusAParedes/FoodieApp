@@ -22,7 +22,7 @@ const foodById = (req, res, next) => {
 
 const addFood = (req, res, next) => {
     let sql = 'INSERT INTO ??(??,??) VALUES(?,?)';
-    let rep = ['foodItems', 'food_name', 'rating', req.body.food_name, req.body.rating];
+    let rep = ['foodItems', 'food_name', 'rating', req.body.food_name, 0];
     sql = mysql.format(sql,rep);
     
     pool.query(sql, (err, rows) => {
