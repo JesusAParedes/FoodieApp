@@ -26,7 +26,8 @@ const login = async (req, res, next) => {
         const match = await argon2.verify(hash, password);
         if(!match) return errors(res, {err: 'This password does not match.'})
         if(match) {
-            const token = jwt.sign({id: rows[0].user_id, first_name: rows[0].first_name}, process.env.PRIVATEKEY)
+            const token = jwt.sign({id: rows[0].user_id}, process.env.PRIVATEKEY)
+            
             
             return res.status(200).json({ token })
         }
