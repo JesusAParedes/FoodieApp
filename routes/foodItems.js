@@ -10,7 +10,7 @@ router.get('/food', foodController.getAllFood);
 router.get('/food/:id', header, foodController.foodById);
 
 //add food to user's list
-router.post('/food', checkToken, header, foodController.addFood);
+router.post('/food', checkToken, verifyHeader, foodController.addFood);
 
 //delete food from user's list
 router.delete('/food/:id', foodController.deleteFood);

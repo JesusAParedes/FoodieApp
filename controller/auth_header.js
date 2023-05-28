@@ -6,8 +6,8 @@ const jwt = require('jsonwebtoken');
 // const { handleSQLError } = require('../sql/error');
 
 const checkToken = (req, res, next) => {
-    const header = req.headers['authorization']
-    console.log(header, 'header')
+    const header = req.body.header.headers['Authorization']
+    
     if(typeof header !== 'undefined') {
         const bearer = header.split(' ');
         const token = bearer[1];
@@ -17,21 +17,29 @@ const checkToken = (req, res, next) => {
     } else {
         res.status(403).send("Error");
     }
+
 }
 
-const header = (req, res) => {
-    const auth_header = req.headers.authorization;
-    console.log(auth_header)
+const verifyHeader = (req, res) => {
+    const auth_header = req.body.header.headers.Authorization;
+    console.log(auth_header, 'auth HEADER')
     //checking that the user has sent credentials
-    if(!auth_header) res.status(401).send('Unauthorized request');
+    if(!auth_header) {res.status(401).send('Unauthorized request');}
+    else {
+        //removing the word Bearer from the token
+        const accessToken = auth_header.split(' ')[1];
+        console.log(accessToken, 'ACCESS')
 
-    const accessToken = auth_header.split('')[1];
+        const newToken = jwt.sign({id: rows[0].user_id, first_name: rows[0].first_name}, process.env.PRIVATEKEY)
 
-    jwt.verify(accessToken, process.env.PRIVATEKEY, (err, payload) => { 
-    if (err) res.status(401).send('Unauthorized request')
-    res.send('Request sent')
-    })
-    
+        //verifying if the token is real
+        jwt.verify(accessToken, process.env.PRIVATEKEY, (err, payload) => { 
+        if (err) res.status(401).send('Unauthorized request')
+        // res.send('Sent')
+        return res.status(200).json({ newToken })
+        })}
+
+    // return res.status(200).json({ newToken })
 }
 
-module.exports = { header, checkToken }
+module.exports = { verifyHeader, checkToken }
