@@ -30,6 +30,7 @@ CREATE TABLE foodItems (
     food_id     INT NOT NULL AUTO_INCREMENT,
     user_id     INT,
     food_name   VARCHAR(50) NOT NULL,
+    restaurant  VARCHAR(100),
     rating      VARCHAR(50) NOT NULL,
     FOREIGN KEY (user_id) REFERENCES users(user_id),
     PRIMARY KEY (food_id)

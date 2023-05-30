@@ -7,12 +7,15 @@ const foodController = require('../controller/foodItems.js');
 router.get('/food', foodController.getAllFood);
 
 //get food for each user
-router.get('/food/:id', verifyHeader, foodController.foodById);
+router.get('/food/:id', foodController.foodById);
 
 //add food to user's list
 router.post('/food', checkToken,  foodController.addFood);
 
+//update food
+router.put('/food/:id', checkToken, foodController.updateFood)
+
 //delete food from user's list
-router.delete('/food/:id', foodController.deleteFood);
+router.delete('/food/:food_id', checkToken, foodController.deleteFood);
 
 module.exports = router;
