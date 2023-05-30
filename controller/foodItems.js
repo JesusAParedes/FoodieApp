@@ -13,26 +13,9 @@ const getAllFood = (req, res, next) => {
 };
 
 const foodById = (req, res, next) => {
-    //grabbing the necessary info from the header
-
-    const auth_header = req.headers.authorization;
-
-     //checking that the user has sent credentials
-     if(!auth_header) {res.status(401).send('Unauthorized request');}
-         //removing the word Bearer from the token
-         const accessToken = auth_header.split(' ')[1];
-         
-         //decoding the jwt to grab the id from it
-         const decoded = jwt_decode(accessToken);       
- 
-         //verifying if the token is real
-         jwt.verify(accessToken, process.env.PRIVATEKEY, (err, payload) => { 
-         if (err) res.status(401).send('Unauthorized request')
-         //storing the user id to use it in the sql statement
-         const id = decoded.id 
 
     let sql = 'SELECT * FROM ?? WHERE ?? = ?';
-    let rep = ['foodItems', 'user_id', id];
+    let rep = ['foodItems', 'user_id', req.userInfo];
     sql = mysql.format(sql,rep);
 
     pool.query(sql, (err, rows) => {
@@ -40,7 +23,7 @@ const foodById = (req, res, next) => {
         return res.json(rows);
     }
     );
-})}
+}
 
 const addFood = (req, res, next) => {
          console.log(req.userInfo);

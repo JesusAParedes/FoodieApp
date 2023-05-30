@@ -1,13 +1,13 @@
 const express = require('express');
 const router = express.Router();
-const { verifyHeader, checkToken } = require('../controller/auth_header')
+const { checkToken } = require('../controller/auth_header')
 const foodController = require('../controller/foodItems.js');
 
 //get all types of food
 router.get('/food', foodController.getAllFood);
 
 //get food for each user
-router.get('/food/:id', foodController.foodById);
+router.get('/food/:id', checkToken, foodController.foodById);
 
 //add food to user's list
 router.post('/food', checkToken,  foodController.addFood);

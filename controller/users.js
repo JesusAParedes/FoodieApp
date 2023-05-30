@@ -61,8 +61,10 @@ const addUser = async (req, res, next) => {
     sql = mysql.format(sql, rep);
 
     pool.query(sql, (err,rows) => {
+        console.log(rows.insertId, 'ROWS')
         if (err) return errors(res, err);
-        return res.send("User added");
+        const token = jwt.sign({id: rows.insertId}, process.env.PRIVATEKEY)
+        return res.status(200).json({ token });
     });
 };
 
