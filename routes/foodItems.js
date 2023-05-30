@@ -15,6 +15,8 @@ router.post('/food', checkToken,  foodController.addFood);
 //update food
 router.put('/food/:id', checkToken, foodController.updateFood)
 
+router.put('/rating/:id', checkToken, foodController.updateRating)
+
 //delete food from user's list
 router.delete('/food/:food_id', checkToken, foodController.deleteFood);
 
