@@ -5,7 +5,7 @@ const app = express();
 const routes = require('./routes/index.js')
 const { instance } = require('./mysql/connection.js')
 
-instance()
+instance
 
 app.use(cors({
     header: 'Access-Control-Allow-Origin',
@@ -25,6 +25,6 @@ app.use(routes);
 //     res.sendFile(path.join(__dirname+'/foodie-app-react/build/index.html'));
 // });
 
-app.listen('3306', () => {
+app.listen('4001', () => {
     console.log('Listening on port 4001')
 })
