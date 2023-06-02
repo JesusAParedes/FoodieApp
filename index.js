@@ -6,7 +6,9 @@ const routes = require('./routes/index.js')
 
 app.use(express.json());
 
-app.use(cors());
+app.use(cors({
+    origin: 'https://foodie-app-react.vercel.app/'
+}));
 
 app.use(express.static(path.join(__dirname, 'foodie-app-react/build')));
 
