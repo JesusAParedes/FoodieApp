@@ -5,6 +5,7 @@ const app = express();
 const routes = require('./routes/index.js')
 
 app.use(cors({
+    header: 'Access-Control-Allow-Origin',
     origin: 'https://foodie-app-react.vercel.app/',
     methods: ['GET', 'POST', 'DELETE', 'UPDATE', 'PUT']
 }));
