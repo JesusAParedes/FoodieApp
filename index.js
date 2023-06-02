@@ -3,6 +3,9 @@ const path = require('path');
 const cors = require('cors');
 const app = express();
 const routes = require('./routes/index.js')
+const { instance } = require('./mysql/connection.js')
+
+instance()
 
 app.use(cors({
     header: 'Access-Control-Allow-Origin',
