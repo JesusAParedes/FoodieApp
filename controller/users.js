@@ -29,7 +29,7 @@ const login = async (req, res, next) => {
             const token = jwt.sign({id: rows[0].user_id}, process.env.PRIVATEKEY)
             
             
-            return res.status(200).json({ token })
+            return res.status(200).header("Access-Control-Allow-Credentials", true).json({ token })
         }
     })
 };
@@ -64,7 +64,7 @@ const addUser = async (req, res, next) => {
         console.log(rows.insertId, 'ROWS')
         if (err) return errors(res, err);
         const token = jwt.sign({id: rows.insertId}, process.env.PRIVATEKEY)
-        return res.status(200).json({ token });
+        return res.status(200).header("Access-Control-Allow-Credentials", true).json({ token });
     });
 };
 
