@@ -7,6 +7,14 @@ const { instance } = require('./mysql/connection.js')
 
 instance
 
+app.use((req, res, next) => {
+    if (req.method ===  'OPTIONS') {
+        res.header("Access-Allow-Control-Allow_Methods", "PUT, POST, PATCH, DELETE, GET");
+        return res.status(200).json({})
+    }
+    next()
+})
+
 app.use(cors());
 
 app.use(express.json());
