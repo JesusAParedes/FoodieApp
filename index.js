@@ -15,15 +15,7 @@ instance
 //     next()
 // })
 
-app.options(routes, cors({
-    origin: "*",
-    methods: ["GET", "POST", "PUT", "DELETE"]
-}));
-
-app.use(cors({
-    origin: "*",
-    methods: ["GET", "POST", "PUT", "DELETE"]
-}))
+app.use(cors())
 
 // app.use(function(req, res, next) {
 //     res.header("Access-Control-Allow-Origin", "https://foodie-app-react.vercel.app/"); // update to match the domain you will make the request from
