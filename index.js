@@ -15,7 +15,9 @@ instance
 //     next()
 // })
 
-app.use(cors())
+app.use(cors({
+    origin: "https://foodie-app-react.vercel.app"
+}))
 
 // app.use(function(req, res, next) {
 //     res.header("Access-Control-Allow-Origin", "https://foodie-app-react.vercel.app/"); // update to match the domain you will make the request from
@@ -30,8 +32,8 @@ app.use(routes);
 app.use(express.static(path.join(__dirname, 'foodie-app-react/build')));
 
 
-app.get('*', (req,res) =>{
-    res.sendFile(path.join(__dirname+'/foodie-app-react/build/index.html'));
+app.get('*', (req, res) => {
+    res.sendFile(path.join(__dirname + '/foodie-app-react/build/index.html'));
 });
 
 app.listen('4001', () => {
