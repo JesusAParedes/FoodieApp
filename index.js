@@ -16,7 +16,8 @@ instance
 // })
 
 app.options('*', cors({
-    origin: 'https://foodie-app-react.vercel.app/'
+    origin: 'https://foodie-app-react.vercel.app/',
+    methods: ["GET", "POST", "PUT", "DELETE"]
 }));
 
 // app.use(cors({
