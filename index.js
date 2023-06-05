@@ -5,6 +5,7 @@ const app = express();
 const routes = require('./routes/index.js')
 const { instance } = require('./mysql/connection.js')
 
+// instance()
 
 // app.use((req, res, next) => {
 //     if (req.method ===  'OPTIONS') {
@@ -14,12 +15,7 @@ const { instance } = require('./mysql/connection.js')
 //     next()
 // })
 
-app.use(cors({
-    origin: "*",
-    methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
-    allowedHeaders: ['Content-Type'],
-    credentials: true
-}))
+app.use(cors())
 
 // app.use(function(req, res, next) {
 //     res.header("Access-Control-Allow-Origin", "https://foodie-app-react.vercel.app/"); // update to match the domain you will make the request from
