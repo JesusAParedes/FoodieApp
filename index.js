@@ -31,7 +31,7 @@ app.get('/hello', (req, res) => {
     res.json({message: "HELLO WORLD!!"})
 })
 
-app.get('get-users', (req, res) => {
+app.get('/get-users', (req, res) => {
     console.log('inside GET all users route')
     pool.query('SELECT * FROM users', (err, rows) => {
         if (err) return errors(res, err);
