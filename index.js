@@ -15,7 +15,7 @@ const { instance } = require('./mysql/connection.js')
 // })
 
 app.use(cors({
-    origin: "https://foodie-app-react.vercel.app",
+    origin: "*",
     methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
     allowedHeaders: ['Content-Type'],
     credentials: true
