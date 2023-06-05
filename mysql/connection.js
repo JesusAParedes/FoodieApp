@@ -5,6 +5,7 @@ const host = process.env.HOST;
 const dbUserName = process.env.DBUSERNAME;
 const password = process.env.PASSWORD;
 const database = process.env.DATABASE;
+const port = process.env.PORT;
 
 class Connection {
     constructor () {
@@ -16,6 +17,7 @@ class Connection {
                 user: dbUserName,
                 password: password,
                 database: database,
+                port: port,
                 multipleStatements: true
             })
             return this.pool
