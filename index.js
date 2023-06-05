@@ -5,7 +5,7 @@ const app = express();
 const routes = require('./routes/index.js')
 const { instance } = require('./mysql/connection.js')
 
-// instance()
+instance()
 
 // app.use((req, res, next) => {
 //     if (req.method ===  'OPTIONS') {
