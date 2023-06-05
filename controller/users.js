@@ -38,6 +38,7 @@ const getAllUsers = (req, res, next) => {
     console.log('inside GET all users route')
     pool.query('SELECT * FROM users', (err, rows) => {
         if (err) return errors(res, err);
+        console.log(rows)
         return res.json(rows);
     });
 };
