@@ -3,7 +3,7 @@ const express = require('express');
 const cors = require('cors');
 const app = express();
 const routes = require('./routes/index.js')
-const pool = './mysql/connection.js'
+const pool = require('./mysql/connection.js')
 
 // app.use((req, res, next) => {
 //     if (req.method ===  'OPTIONS') {
