@@ -7,7 +7,7 @@ const jwt = require('jsonwebtoken');
 const defaultRoute = (req, res, next) => {
     console.log('Welcome to Foodies!');
     res.send('Welcome to Foodies!');
-    next();
+    // next();
 };
 
 const login = async (req, res, next) => {
