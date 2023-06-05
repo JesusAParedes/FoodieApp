@@ -3,6 +3,7 @@ const express = require('express');
 const cors = require('cors');
 const app = express();
 const routes = require('./routes/index.js')
+const pool = './mysql/connection.js'
 
 // app.use((req, res, next) => {
 //     if (req.method ===  'OPTIONS') {
@@ -29,6 +30,15 @@ app.use(routes);
 app.get('/hello', (req, res) => {
     res.json({message: "HELLO WORLD!!"})
 })
+
+app.get('get-users', (req, res) => {
+    console.log('inside GET all users route')
+    pool.query('SELECT * FROM users', (err, rows) => {
+        if (err) return errors(res, err);
+        console.log(rows)
+        return res.json(rows);
+    });
+});
 
 // app.use(express.static(path.join(__dirname, 'foodie-app-react/build')));
 
