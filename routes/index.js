@@ -10,6 +10,7 @@ router.use((req,res,next) => {
     const timeElapsed = Date.now();
     const today = new Date(timeElapsed);
     console.log('Today:', today.toString())
+    console.log(process.env.HOST, process.env.DBUSERNAME, process.env.PASSWORD, process.env.DATABASE, 'HOST, USERNAME, PW, DB' )
     next();
 });
 
