@@ -1,4 +1,4 @@
-USE foodapi;
+USE foodie_app;
 
 INSERT INTO restaurants
     (store_id, name, address, phone, hours)

@@ -1,4 +1,4 @@
-USE foodapi;
+USE foodie_app;
 
 INSERT INTO foodItems
     (food_id, user_id, food_name, restaurant, rating)
