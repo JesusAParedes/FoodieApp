@@ -35,6 +35,7 @@ const login = async (req, res, next) => {
 };
 
 const getAllUsers = (req, res, next) => {
+    console.log('inside GET all users route')
     pool.query('SELECT * FROM users', (err, rows) => {
         if (err) return errors(res, err);
         return res.json(rows);
