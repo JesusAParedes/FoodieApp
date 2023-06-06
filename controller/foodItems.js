@@ -50,7 +50,7 @@ const updateFood = (req, res) => {
 
 const updateRating = (req, res) => {
     let sql = 'UPDATE ?? SET ?? = ? WHERE ?? = ?'
-    let rep = ['foodItems', 'rating', req.body.Rating, 'food_id', req.params.id]
+    let rep = ['foodItems', 'rating', req.body.Rating, 'food_id', req.params.food_id]
 
     sql = mysql.format(sql, rep);
 
