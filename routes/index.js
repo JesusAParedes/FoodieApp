@@ -11,9 +11,9 @@ router.use((req, res, next) => {
     next();
 });
 
-router.use(usersRoutes);
+router.use('/food', foodRoutes);
 
-router.use(foodRoutes);
+router.use(usersRoutes);
 
 // router.use(restaurantsRoutes);
 
