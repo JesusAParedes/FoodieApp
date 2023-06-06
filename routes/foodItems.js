@@ -4,7 +4,7 @@ const { checkToken } = require('../controller/auth_header')
 const foodController = require('../controller/foodItems.js');
 
 //get all types of food
-router.get('/food', foodController.getAllFood);
+// router.get('/food', foodController.getAllFood);
 
 //get food for each user
 router.get('/food/:id', checkToken, foodController.foodById);
@@ -15,7 +15,8 @@ router.post('/food', checkToken,  foodController.addFood);
 //update food
 router.put('/food/:id', checkToken, foodController.updateFood)
 
-router.put('/rating/:id', checkToken, foodController.updateRating)
+//update rating
+router.put('/rating/:food_id', checkToken, foodController.updateRating)
 
 //delete food from user's list
 router.delete('/food/:food_id', checkToken, foodController.deleteFood);
