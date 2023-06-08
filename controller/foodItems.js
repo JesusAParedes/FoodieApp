@@ -29,7 +29,7 @@ const addFood = (req, res, next) => {
     sql = mysql.format(sql, rep);
 
     pool.query(sql, (err, rows) => {
-        console.log(rows, 'ROWS');
+        console.log(req, 'ROWS');
         if (err) return errors(res, err);
         return res.send("Food Added")
     });
